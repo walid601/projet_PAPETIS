@@ -1,21 +1,127 @@
-# 📈 Outil de Prévision des Ventes — PAPETIS DISTRIBUTION
+# PAPETIS DISTRIBUTION — Outil de prévision des ventes
 
-Prototype fonctionnel d'aide à la décision conçu pour l'analyse de la saisonnalité et la génération de prévisions mensuelles à horizon de 12 mois glissants (Année 2026).
+Outil de prévision des ventes mensuelles à 12 mois glissants pour PAPETIS DISTRIBUTION.  
+Développé dans le cadre d'un projet étudiant de contrôle de gestion.
 
-## 🚀 Fonctionnalités Implémentées
-- **Importation automatisée (No-Touch)** du fichier historique des ventes de l'entreprise.
-- **Détection et correction par imputation** des 2 observations atypiques (Chocs logistiques/conjoncturels).
-- **Modélisation de la tendance** via trois méthodes statistiques :
-  - Moindres Carrés Ordinaires (MCO)
-  - Moyennes Mobiles Centrées (MM12)
-  - Lissage Exponentiel Simple (LES)
-- **Arbitrage et calcul d'indicateurs de performance** (Calcul du MAPE pour chaque modèle).
-- **Ajustement Saisonnier** basé sur un modèle multiplicatif global.
-- **Visualisation graphique avancée** intégrant l'historique brut, l'historique corrigé, les tendances et les prévisions.
-- **Exportation automatisée** des résultats sur un classeur Excel multi-feuilles et génération d'un rendu image haute résolution.
+---
 
-## 🛠️ Configuration et Installation
-1. S'assurer de disposer d'un environnement **Python 3.11 ou supérieur**.
-2. Installer les dépendances nécessaires à l'aide du gestionnaire de paquets :
-   ```bash
-   pip install pandas numpy openpyxl matplotlib statsmodels
+## Fonctionnalités
+
+- Import automatique d'un fichier Excel ou CSV de ventes historiques
+- Calcul de la tendance par 3 méthodes : moindres carrés (MCO), moyennes mobiles, lissage exponentiel
+- Calcul des coefficients saisonniers (modèle multiplicatif)
+- Prévisions mensuelles sur 12 mois glissants
+- Détection automatique des observations atypiques
+- Comparaison des méthodes avec indicateur d'erreur MAPE
+- Export des résultats au format Excel
+- Visualisation graphique historique + prévisions
+
+---
+
+## Prérequis
+
+- Python 3.9 ou supérieur
+- pip
+
+---
+
+## Installation
+
+### 1. Cloner le dépôt
+
+```bash
+git clone https://github.com/VOTRE_USERNAME/papetis-previsions.git
+cd papetis-previsions
+```
+
+### 2. Installer les dépendances
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Structure du projet
+
+```
+papetis-previsions/
+│
+├── data/
+│   └── papetis_ventes_historiques.xlsx   ← fichier de données (à placer ici)
+│
+├── papetis_backend.py                    ← calculs statistiques et prévisions
+├── app.py                                ← interface Streamlit (front-end)
+├── requirements.txt                      ← dépendances Python
+└── README.md
+```
+
+---
+
+## Lancement
+
+### Backend seul (calculs + export Excel)
+
+```bash
+python papetis_backend.py
+```
+
+Résultats générés dans le dossier courant :
+- `previsions_papetis.xlsx` — fichier Excel avec 4 feuilles de résultats
+- `graphique_previsions.png` — graphique des prévisions
+
+### Interface Streamlit (recommandé)
+
+```bash
+streamlit run app.py
+```
+
+Ouvre automatiquement l'interface dans le navigateur à l'adresse `http://localhost:8501`.
+
+---
+
+## Fichier de données attendu
+
+Le fichier Excel doit contenir :
+
+| Feuille | Contenu |
+|---|---|
+| `Ventes globales` | Ventes mensuelles totales sur 60 mois (colonnes : Année, Mois, t, Ventes (kMAD)) |
+| `Ventes par famille` | Ventilation par famille de produits |
+
+Le fichier doit être placé dans le dossier `data/` avant de lancer le script.
+
+---
+
+## Dépendances (`requirements.txt`)
+
+```
+pandas>=1.5.0
+numpy>=1.23.0
+matplotlib>=3.6.0
+openpyxl>=3.0.10
+statsmodels>=0.13.0
+streamlit>=1.20.0
+plotly>=5.13.0
+```
+
+---
+
+## Résultats attendus
+
+Après exécution, le fichier `previsions_papetis.xlsx` contient :
+
+- **Prévisions 2026** — les 12 prévisions mensuelles en kMAD
+- **Historique & Tendances** — données corrigées + les 3 courbes de tendance
+- **Coefficients Saisonniers** — les 12 coefficients ajustés (somme = 12)
+- **Comparaison Méthodes** — MAPE de chaque méthode
+
+---
+
+## Auteurs
+
+- **Étudiant A** — NOM Prénom — Interface Streamlit, visualisation, documentation
+- **Étudiant B** — NOM Prénom — Back-end, algorithmes statistiques, modélisation UML
+
+Projet encadré par : [Nom de l'enseignant]  
+Année universitaire : 2025–2026
