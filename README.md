@@ -120,8 +120,8 @@ Après exécution, le fichier `previsions_papetis.xlsx` contient :
 
 ## Auteurs
 
-- **Étudiant A** — NOM Prénom — Interface Streamlit, visualisation, documentation
-- **Étudiant B** — NOM Prénom — Back-end, algorithmes statistiques, modélisation UML
+- **Étudiant A** — ELGUEDDARI walid — Interface Streamlit, visualisation, documentation
+- **Étudiant B** — MAATIR abdelssamad — Back-end, algorithmes statistiques, modélisation UML
 
-Projet encadré par : [Nom de l'enseignant]  
+Projet encadré par :  
 Année universitaire : 2025–2026
